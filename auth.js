@@ -9,7 +9,7 @@ async function getUser(email) {
   try {
     const sql = neon(`${process.env.DATABASE_URL}`);
     const user = await sql`SELECT * FROM users WHERE email=${email}`;
-    return user.rows[0];
+    return user[0];
   } catch (error) {
     console.error('Failed to fetch user:', error);
     throw new Error('Failed to fetch user.');
